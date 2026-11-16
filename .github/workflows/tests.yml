@@ -1,0 +1,39 @@
+# this_file: .github/workflows/tests.yml
+name: Tests
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  host-free:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
+        with:
+          persist-credentials: false
+      - uses: astral-sh/setup-uv@37802adc94f370d6bfd71619e3f0bf239e1f3b78 # v7.6.0
+        with:
+          version: '0.13.7'
+          python-version: '3.13'
+          enable-cache: false
+      # Only host-free tests run here: the App, Glyport, Fontport and Pens siblings are private and are
+      # not checked out. Each deselected node ID is named in TODO.md (tests/test_workflow.py pins this).
+      # -rs prints skips; any skip is then rejected below.
+      - name: Run host-free tests
+        env:
+          PYTHONPATH: src
+        run: |
+          set -eo pipefail
+          uv run --no-project --with pytest==8.4.2 python -m pytest -q -p no:cacheprovider -rs \
+            --deselect "tests/test_aliases.py::test_package_alias_when_real_provider_checkout_present_then_resolves_to_it[ap-fontlabapp-fontlab-fontlabapp-kerning.batch]" \
+            --deselect "tests/test_aliases.py::test_package_alias_when_real_provider_checkout_present_then_resolves_to_it[gp-fontlab_glyport-fontlab-glyport-affine]" \
+            --deselect "tests/test_aliases.py::test_package_alias_when_real_provider_checkout_present_then_resolves_to_it[fp-fontlab_fontport-fontlab-fontport-errors]" \
+            --deselect "tests/test_aliases.py::test_package_alias_when_real_provider_checkout_present_then_resolves_to_it[pens-fontlab_pens-fontlab-python-pens-recording]" \
+            --deselect "tests/test_migrate_app_paths.py::test_rewrite_when_paths_overlap_then_preserve_boundaries_and_bindings" \
+            --deselect "tests/test_migrate_app_paths.py::test_migrate_when_archive_present_then_leave_it_untouched" \
+            tests | tee pytest.log
+          if grep -q "SKIPPED" pytest.log; then echo "Unexpected skip"; exit 1; fi
