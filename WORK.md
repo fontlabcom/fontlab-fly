@@ -4,6 +4,12 @@ this_file: WORK.md
 
 # Current round — Issue 255 post-release reconciliation
 
+## 2026-11-14 — Functional work order documented
+
+Updated AGENTS, PLAN and TODO to prioritize useful functional changes and compatible package boundaries, with detailed testing deferred. Existing backlog and prior records are retained. Documentation preservation and policy consistency were checked; no runtime, installed or native checks ran in this documentation-only pass.
+
+Next: reconcile affected Script and example setup with matching Fly/provider imports and explicit child paths; use focused alias/identity checks before the detailed installed/native pass.
+
 [fontlab-fly v1.3.1](https://github.com/fontlabcom/fontlab-fly/releases/tag/v1.3.1) is qualified at `733566ef47938c173bd00c3e6a7ca59c75e77ff8`.
 
 Complete ten-alias source teaching is reviewed, including the remote metrics skill. All nine consumer migrations passed the final source re-audit.

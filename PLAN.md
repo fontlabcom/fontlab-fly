@@ -2,6 +2,12 @@
 this_file: PLAN.md
 ---
 
+## Functional work order — 2026-11-14
+
+Keep all ten aliases lazy and preserve canonical provider identity, metadata and explicit child imports. Resolve consumer setup and import failures together with App, Pens and the affected Scripts or examples, without introducing mandatory reverse dependencies.
+
+Use small smoke checks and focused regressions for changed behavior and package boundaries. Keep the existing detailed acceptance tasks for a later testing pass; mandatory delivery hooks and current holds remain in force.
+
 ## Issue 255 remaining native acceptance
 
 After explicit D43 recovery and admission, verify all ten aliases, both import forms, canonical metadata and child imports from the released wheel/sdist in FontLab arm64 Python 3.11; record host build, hashes and loaded paths. Source, genuine artifact, ordinary external-install and release/download qualification for v1.3.1 is recorded in CHANGELOG. Existing private Pages and Issue 123 holds remain.

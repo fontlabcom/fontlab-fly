@@ -5,6 +5,8 @@ this_file: TODO.md
 
 # Open tasks
 
+- [ ] Reconcile affected Script and example setup with matching Fly/provider imports and explicit child paths; use focused alias/identity checks before the detailed installed/native pass.
+
 - [ ] Issue 255: After explicit D43 recovery and admission, verify all ten aliases, both import forms, canonical metadata and child imports from the released wheel/sdist in FontLab arm64 Python 3.11; record host build, hashes and loaded paths.
 
 - [ ] Keep private Pages configuration/deployment and live main:/docs acceptance held until the owner explicitly lifts the publication hold.
