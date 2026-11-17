@@ -2,6 +2,13 @@
 this_file: CHANGELOG.md
 ---
 
+## 2026-11-17 — Installer stub from instamix 1.0.15 (Issue 259 follow-ups)
+
+- `install.vfpy` is now the stub from fontlab-python-instamix 1.0.15. It replaces an
+  installed instamix older than 1.0.13 and puts the old copy back if the upgrade
+  fails; linked checkouts and local builds are kept. A download that fails for
+  lack of root certificates (FontLab 9 for macOS) is retried with the system curl.
+
 ## 2026-11-17 — Issue 258 task cleanup
 
 - Marked the TODO row for the six CI-deselected tests as done and low priority (the row stays because `tests/test_workflow.py` requires the node ids in TODO.md): done twice, see the 2026-11-12 entry "Deselected provider tests rerun against current siblings" (Fly `3763ccc`, App `2fc2f07`, Glyport `10b6975`, Fontport `1c8e1ca`; 5 passed, full suite 30 passed) and the 2026-11-11 entry (Fly `c2c8af5`, 30 passed). CI still cannot run them because the siblings are private.
