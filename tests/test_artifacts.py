@@ -14,7 +14,7 @@ ROOT = Path(__file__).resolve().parents[1]
 ALIASES = {'fl': 'echopy.fontlab', 'fg': 'echopy.fontgate', 'tr': 'typerig', 'pr': 'echopy.fontpr',
            'qt': 'PythonQt', 'ap': 'fontlabapp', 'qs': 'pythonqtside', 'gp': 'fontlab_glyport',
            'fp': 'fontlab_fontport', 'pens': 'fontlab_pens'}
-SDIST_ENTRIES = {'src', 'tests', 'examples', 'skills', 'pyproject.toml', 'README.md', 'PLAN.md',
+SDIST_ENTRIES = {'install.vfpy', 'src', 'tests', 'examples', 'skills', 'pyproject.toml', 'README.md', 'PLAN.md',
                       'TODO.md', 'LICENSE', 'NOTICE', 'CHANGELOG.md', 'DEPENDENCIES.md', 'test.sh',
                       '.gitignore'}  # hatchling always adds .gitignore
 
@@ -62,6 +62,12 @@ def test_sdist_when_built_then_contains_only_declared_top_level_entries(dist):
     assert not any('/src_docs/' in n or '/docs/' in n for n in names), 'Website sources leaked into the sdist'
     for required in ('src/fly/__init__.py', 'LICENSE', 'NOTICE', 'tests/test_aliases.py'):
         assert any(n.endswith('/' + required) for n in names), f'sdist omits {required}'
+
+
+def test_sdist_when_built_then_preserves_the_installer_bytes(dist):
+    with tarfile.open(dist[0]) as sdist:
+        installer = sdist.getnames()[0].split('/')[0] + '/install.vfpy'
+        assert sdist.extractfile(installer).read() == (ROOT / 'install.vfpy').read_bytes()
 
 
 def test_installed_wheel_when_providers_are_stubs_then_all_ten_aliases_resolve_exactly(dist, tmp_path):

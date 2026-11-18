@@ -2,6 +2,15 @@
 this_file: CHANGELOG.md
 ---
 
+## 2026-11-18 — Issue 271 source archive installer
+
+Include the unchanged root `install.vfpy` in the explicit sdist input list.
+The genuine archive regression verifies its exact root bytes and the complete
+allowed top-level payload. The new assertion failed before the input fix; all
+36 source tests, six focused packaging tests and wheel/sdist builds now pass.
+Released archive and native execution qualification remain separate.
+
+
 ## 2026-11-18 — Issue 271 installer source alignment
 
 The generated installer matches the reviewed Instamix 1.0.18 template: it requires
