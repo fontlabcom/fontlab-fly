@@ -2,7 +2,15 @@
 this_file: WORK.md
 ---
 
-# Current round — Issue 255 post-release reconciliation
+# Current round — documentation theme migration
+
+Migrated the documentation site to fly-january 0.1.1 with FontLab chrome and
+the menu label `Fly`. The Python 3.13 strict build completed without warnings.
+An independent rebuild matched all 53 files in `docs/`. All 38 documentation
+tests and 35 Python 3.11 arm64 package tests passed. Browser checks are with
+the orchestrator. Private Pages publication remains held.
+
+## Issue 255 post-release reconciliation
 
 ## 2026-11-14 — Functional work order documented
 

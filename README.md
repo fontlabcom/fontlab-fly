@@ -138,9 +138,10 @@ Link the skill folders into the skills directory used by your agent.
 
 [Fly guide sources](src_docs/md/index.md) build locally; Pages is not deployed.
 Private Pages publication is held by the owner on the current account plan.
-Use Python 3.13 and the hash-locked `src_docs/requirements.txt`; `sh src_docs/build.sh`
-reads `src_docs/mkdocs.yml` and regenerates `docs`. The [development guide](src_docs/md/development.md)
-covers main-push CI: two full builds qualify source/output without requesting Pages.
+The site uses fly-january 0.1.1 with the FontLab menu and footer. Install the
+hash-locked `src_docs/requirements.txt` in a Python 3.13 docs environment.
+`sh src_docs/build.sh` reads `src_docs/mkdocs.yml` and rebuilds `docs/` in strict
+mode. The [development guide](src_docs/md/development.md) covers local checks and CI.
 
 ## Test and lint
 

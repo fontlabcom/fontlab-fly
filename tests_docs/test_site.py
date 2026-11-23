@@ -57,18 +57,29 @@ class SiteTests(unittest.TestCase):
                 if url.fragment and dest.suffix == '.html':
                     self.assertIn(unquote(url.fragment), Page(dest.read_text()).ids, (path, link))
 
-    def test_pages_have_light_menu_footer_local_search_and_correct_canonical(self):
-        for route in PAGES:
+    def test_pages_have_fly_assets_fontlab_chrome_local_search_and_correct_canonical(self):
+        for route in [*PAGES, '404.html']:
             page = Page((SITE / route).read_text())
             with self.subTest(route=route):
-                self.assertEqual([attrs.get('mode') for tag, attrs in page.tags if tag == 'fontlab-menu'], ['light'])
-                self.assertEqual([attrs.get('mode') for tag, attrs in page.tags if tag == 'fontlab-footer'], ['light'])
+                urls = [urlsplit(link) for link in page.links]
+                local_paths = [url.path for url in urls if not url.scheme and not url.netloc]
+                for asset in ('assets/fly/fly.css', 'assets/fly/fly-bridge.js', 'assets/fly/fly.js'):
+                    self.assertEqual(sum(path.endswith(asset) for path in local_paths), 1, asset)
+                self.assertEqual(page.links.count('https://i.fontlab.com/menu/fontlab.js'), 1)
+                menus = [attrs for tag, attrs in page.tags if tag == 'fontlab-menu']
+                self.assertEqual(len(menus), 1)
+                self.assertEqual(menus[0]['site-label'], 'Fly')
+                self.assertEqual(menus[0]['mobile-menu'], 'materialx')
+                self.assertEqual(menus[0]['mobile-search'], 'materialx')
+                self.assertEqual([tag for tag, _ in page.tags if tag == 'fontlab-footer'], ['fontlab-footer'])
                 self.assertEqual([attrs.get('data-md-color-scheme') for tag, attrs in page.tags if tag == 'body'], ['default'])
                 search = [attrs for tag, attrs in page.tags if attrs.get('data-md-component') == 'search-query']
                 self.assertEqual(len(search), 1)
                 self.assertFalse(any(attrs.get('data-md-component') == 'palette' for _, attrs in page.tags))
                 canonical = [attrs['href'] for tag, attrs in page.tags if attrs.get('rel') == 'canonical']
-                self.assertEqual(canonical, ['https://fontlabcom.github.io/fontlab-fly/' + route.removesuffix('index.html')])
+                expected = [] if route == '404.html' else [
+                    'https://fontlabcom.github.io/fontlab-fly/' + route.removesuffix('index.html')]
+                self.assertEqual(canonical, expected)
 
     def test_search_indexes_every_authored_page(self):
         search = json.loads((SITE / 'search/search_index.json').read_text())

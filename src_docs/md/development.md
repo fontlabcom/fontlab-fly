@@ -29,19 +29,19 @@ proof. Those are separate from this website build.
 
 ## Build these pages
 
-Use Python 3.12 or later in a separate docs environment:
+Build from the repository root in a separate Python 3.13 environment.
 
 ```sh
 uv venv --python 3.13 .docs-venv
 uv pip install --python .docs-venv/bin/python --require-hashes -r src_docs/requirements.txt
-PATH="$PWD/.docs-venv/bin:$PATH" sh src_docs/build.sh
-.docs-venv/bin/python -m unittest discover -s tests_docs -v
+export PATH="$PWD/.docs-venv/bin:$PATH"
+sh src_docs/build.sh
+python -m unittest discover -s tests_docs -v
 ```
 
-ProperDocs reads `src_docs/mkdocs.yml`, the Markdown in `src_docs/md` and the local
-MaterialX override. It cleans and rebuilds repository-root `docs`. Generated
-pages use the official FontLab theme assets and a fixed light palette. CDN fonts,
-menu and theme assets need network access; search uses MaterialX's local index.
+ProperDocs reads `src_docs/mkdocs.yml` and the Markdown in `src_docs/md`, then
+rebuilds `docs/` in strict mode. The fly-january 0.1.1 theme supplies the FontLab
+menu and footer. The menu labels this guide `Fly`. Search uses MaterialX's local index.
 `src_docs/build.sh` defaults `SOURCE_DATE_EPOCH` to the checkout's commit timestamp.
 CI captures the source commit's timestamp once and passes it to both builds;
 the generated commit's timestamp and later UTC dates do not change the output.

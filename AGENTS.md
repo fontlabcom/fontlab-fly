@@ -17,10 +17,11 @@ Choose the next substantial useful feature or shared fix and carry its affected 
 ## Issue 233 website lane
 
 The workspace's D40 authorizes the scoped documentation site. Source is in
-`src_docs/md`, configuration in `src_docs/mkdocs.yml`, output in `docs`. Keep
-ProperDocs/MaterialX and the official FontLab theme in fixed light mode. Use the
-hash-locked separate docs environment; run `sh src_docs/build.sh` and
-`python -m unittest discover -s tests_docs -v` there. Every main push builds;
+`src_docs/md`, configuration in `src_docs/mkdocs.yml`, output in `docs`.
+ProperDocs uses fly-january 0.1.1 with the `fly` plugin, `fontlab` chrome and
+the site label `Fly`. Keep the page palette in fixed light mode.
+In the hash-locked Python 3.13 docs environment, run `sh src_docs/build.sh`
+and `python -m unittest discover -s tests_docs -v`. Every main push builds;
 the generated commit gets a separate read-only full rebuild and exact parity check.
 The owner's later instruction holds private Pages configuration and publication.
 The workflow grants no Pages permission and makes no Pages request. Keep the tested
