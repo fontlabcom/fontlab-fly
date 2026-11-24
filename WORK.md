@@ -10,6 +10,24 @@ An independent rebuild matched all 53 files in `docs/`. All 38 documentation
 tests and 35 Python 3.11 arm64 package tests passed. Browser checks are with
 the orchestrator. Private Pages publication remains held.
 
+## 2026-11-18 — Issue 271 source archive installer
+
+Include the unchanged root `install.vfpy` in the explicit sdist input list.
+The genuine archive regression verifies its exact root bytes and the complete
+allowed top-level payload. The new assertion failed before the input fix; all
+36 source tests, six focused packaging tests and wheel/sdist builds now pass.
+Released archive and native execution qualification remain separate.
+
+
+## 2026-11-18 — Issue 271 generated installer candidate
+
+Regenerated `install.vfpy` with Instamix 1.0.18, preserving project declarations and
+runtime source. Exact reviewed-template byte parity and import-sentinel/wheel-order smoke checks pass. No repository-specific installer test was selected.
+Task-owned graph impact/change analysis cannot resolve an index; structural caller
+checks supplement this unavailable evidence. Full repository delivery gates,
+independent cohort review and native qualification remain pending. No owner install ran.
+
+
 ## Issue 255 post-release reconciliation
 
 ## 2026-11-14 — Functional work order documented
