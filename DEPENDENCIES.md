@@ -14,7 +14,7 @@ this_file: DEPENDENCIES.md
 - Native PythonQt: provided by FontLab for qt.
 - Standard importlib: lazy alias routing preserving canonical module identity.
 
-- The Python 3.13 docs environment uses fly-january 0.2.1, ProperDocs 1.6.7,
+- The Python 3.13 docs environment uses fly-january 0.3.0 or later, ProperDocs 1.6.7,
   MkDocs 1.6.1, MaterialX 10.1.8 and PyMdown 11.0.1. `src_docs/requirements.txt`
   pins the docs dependencies and their hashes.
 - CI setup uses pinned checkout and setup-uv actions with uv 0.13.7.
