@@ -14,14 +14,14 @@ imports without embedding provider source.
 
 The documentation uses [ProperDocs](https://properdocs.org/),
 [MaterialX](https://github.com/jaywhj/mkdocs-materialx) and the
-[fly-january 0.2.0 theme](https://pypi.org/project/fly-january/0.2.0/).
+[fly-january 0.2.1 theme](https://pypi.org/project/fly-january/0.2.1/).
 The theme's [Apache 2.0 licence](assets/LICENSE) covers its local stylesheets and scripts.
 The generated MaterialX assets retain their bundled copyright notices.
 
 
 ## Current English browser payload
 
-The [browser-component record](assets/current-frontend-notices.json) identifies the notices and upstream packages for fly-january 0.2.0 and MaterialX 10.1.8, including the MaterialX source maps.
+The [browser-component record](assets/current-frontend-notices.json) identifies the notices and upstream packages for fly-january 0.2.1 and MaterialX 10.1.8, including the MaterialX source maps.
 
 The [English-only omission manifest](assets/english-search-omissions.json) binds all 35 unused lunr-languages 1.20.0 helpers, including Wordcut and TinySegmenter. Before removing them, the build verifies the theme and search language, the search index, local HTML references and the hashes of all 14 retained assets. Five come directly from fly-january. Of the nine MaterialX assets, the theme rescales rem lengths in two stylesheets and leaves the other seven byte-identical.
 

@@ -40,7 +40,7 @@ python -m unittest discover -s tests_docs -v
 ```
 
 ProperDocs reads `src_docs/mkdocs.yml` and the Markdown in `src_docs/md`, then
-rebuilds `docs/` in strict mode. The fly-january 0.2.0 theme supplies the FontLab
+rebuilds `docs/` in strict mode. The fly-january 0.2.1 theme supplies the FontLab
 menu and footer. The menu labels this guide `Fly`. Search uses MaterialX's local index.
 `src_docs/build.sh` defaults `SOURCE_DATE_EPOCH` to the checkout's commit timestamp.
 CI captures the source commit's timestamp once and passes it to both builds;
