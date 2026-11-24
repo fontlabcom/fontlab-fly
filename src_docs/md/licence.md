@@ -14,16 +14,16 @@ imports without embedding provider source.
 
 The documentation uses [ProperDocs](https://properdocs.org/),
 [MaterialX](https://github.com/jaywhj/mkdocs-materialx) and the
-[fly-january 0.3.0 or later](https://pypi.org/project/fly-january/).
-The theme's [Apache 2.0 licence](assets/LICENSE) covers its local stylesheets and scripts.
+[fly-january 0.4.0 or later (remote theme assets)](https://pypi.org/project/fly-january/).
+The theme's [Apache 2.0 licence](assets/LICENSE) covers its CDN-hosted stylesheets and scripts.
 The generated MaterialX assets retain their bundled copyright notices.
 
 
 ## Current English browser payload
 
-The [browser-component record](assets/current-frontend-notices.json) identifies the notices and upstream packages for fly-january 0.3.0 or later and MaterialX 10.1.8, including the MaterialX source maps.
+The [browser-component record](assets/current-frontend-notices.json) identifies the notices and upstream packages for fly-january 0.4.0 or later (remote theme assets) and MaterialX 10.1.8, including the MaterialX source maps.
 
-The [English-only omission manifest](assets/english-search-omissions.json) binds all 35 unused lunr-languages 1.20.0 helpers, including Wordcut and TinySegmenter. Before removing them, the build verifies the theme and search language, the search index, local HTML references and the hashes of all 14 retained assets. Five come directly from fly-january. Of the nine MaterialX assets, the theme rescales rem lengths in two stylesheets and leaves the other seven byte-identical.
+The [English-only omission manifest](assets/english-search-omissions.json) binds all 35 unused lunr-languages 1.20.0 helpers, including Wordcut and TinySegmenter. Before removing them, the build verifies the theme and search language, the search index, local HTML references and the hashes of all nine retained MaterialX assets. Of these, the theme rescales rem lengths in two stylesheets and leaves the other seven byte-identical.
 
 The main source map retains 211 preferred sources, including 128 exact NPM source matches; the worker map retains 13 sources, including Lunr 2.3.9. The exact clipboard distribution embeds its dependencies; select, good-listener and delegate retain their upstream README MIT link and Zeno Rocha attribution, without invented standalone licence text or dates. CSS maps retain source names without embedded source bodies.
 

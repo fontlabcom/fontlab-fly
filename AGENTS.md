@@ -18,7 +18,7 @@ Choose the next substantial useful feature or shared fix and carry its affected 
 
 The workspace's D40 authorizes the scoped documentation site. Source is in
 `src_docs/md`, configuration in `src_docs/mkdocs.yml`, output in `docs`.
-ProperDocs uses fly-january 0.3.0 or later with the `fly` plugin, `fontlab` chrome and
+ProperDocs uses fly-january 0.4.0 or later (remote theme assets) with the `fly` plugin, `fontlab` chrome and
 the site label `Fly`. Keep the page palette in fixed light mode.
 In the hash-locked Python 3.13 docs environment, run `sh src_docs/build.sh`
 and `python -m unittest discover -s tests_docs -v`. Every main push builds;

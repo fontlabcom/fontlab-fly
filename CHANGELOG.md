@@ -4,6 +4,7 @@ this_file: CHANGELOG.md
 
 ## Unreleased
 
+- The site uses fly-january 0.4.0 or later (remote theme assets).
 - The docs now accept fly-january 0.3.0 or later and lock reproducible builds to 0.3.0.
 
 - Site now uses the fly-january 0.2.1 theme (chrome: fontlab).

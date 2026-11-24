@@ -61,10 +61,9 @@ class SiteTests(unittest.TestCase):
         for route in [*PAGES, '404.html']:
             page = Page((SITE / route).read_text())
             with self.subTest(route=route):
-                urls = [urlsplit(link) for link in page.links]
-                local_paths = [url.path for url in urls if not url.scheme and not url.netloc]
-                for asset in ('assets/fly/fly.css', 'assets/fly/fly-bridge.js', 'assets/fly/fly.js'):
-                    self.assertEqual(sum(path.endswith(asset) for path in local_paths), 1, asset)
+                self.assertFalse(any('assets/fly/' in link for link in page.links))
+                for asset in ('fly.css', 'fly-bridge.js', 'fly.js'):
+                    self.assertEqual(page.links.count('https://fontlab.dev/fontlab-www-docstheme/fly/latest/' + asset), 1)
                 self.assertEqual(page.links.count('https://i.fontlab.com/menu/fontlab.js'), 1)
                 menus = [attrs for tag, attrs in page.tags if tag == 'fontlab-menu']
                 self.assertEqual(len(menus), 1)
