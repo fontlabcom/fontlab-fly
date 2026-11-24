@@ -2,47 +2,26 @@
 this_file: PLAN.md
 ---
 
-## Issue 271 installer qualification
+# Remaining work
 
-Integrate the independently reviewed generated installer through existing full
-repository/hook gates; verify exact-SHA CI and archives, then qualify native
-macOS/Windows use when the serialized guard is available. Preserve owner files.
+## Providers and consumers
 
+Keep Fly's ten aliases lazy. Each must return the canonical provider object with its metadata and explicit child imports intact. App owns shared UI and Feature helpers, Fontport owns fontParts/UFO support, and Glyport owns Glyphs.app compatibility. Address consumer setup failures with the affected provider, preserving dependency direction.
 
-## Functional work order — 2026-11-14
+When a provider or consuming Script changes, compare the affected examples with the App and Pens imports and rerun the relevant sibling tests locally. Enable the six cases listed in TODO when CI can check out their repositories.
 
-Keep all ten aliases lazy and preserve canonical provider identity, metadata and explicit child imports. Resolve consumer setup and import failures together with App, Pens and the affected Scripts or examples, without introducing mandatory reverse dependencies.
+## FontLab acceptance
 
-Use small smoke checks and focused regressions for changed behavior and package boundaries. Keep the existing detailed acceptance tasks for a later testing pass; mandatory delivery hooks and current holds remain in force.
+- Issue 255 requires explicit D43 recovery and admission after the runner returned exit 79. Use the serialized native runner for both released formats on arm64 Python 3.11. Check all ten aliases through both import forms, canonical metadata, and child-module identity. Record artifact hashes, host build and loaded paths to detect shadowing by editable installs.
+- For Issue 254, compare the current Fly and App installer bytes with the App's comparison tool. Cover the post-install alias check in the Issue 255 run.
+- For Issue 271, confirm independent installer cohort review and run the released installer in FontLab on macOS and Windows once the native queue admits each run.
+- Verify the adapted Feature scripts on a test font using `fly.ap.fontui.feature_blocks` and explicit App child imports. Keep Apply, Undo, Redo, save and reopen results with the consuming repositories.
 
-## Issue 255 remaining native acceptance
+## Release, cleanup and holds
 
-After explicit D43 recovery and admission, verify all ten aliases, both import forms, canonical metadata and child imports from the released wheel/sdist in FontLab arm64 Python 3.11; record host build, hashes and loaded paths. Source, genuine artifact, ordinary external-install and release/download qualification for v1.3.1 is recorded in CHANGELOG. Existing private Pages and Issue 123 holds remain.
+- The PyPI project owner confirms the Trusted Publisher for `fontlabcom/fontlab-fly`, workflow `release.yml`, environment `pypi`.
+- After qualified main integration, inspect current branch and worktree attachments before removing stale branches or files. Preserve recoverable unique work.
+- Private Pages configuration, deployment and live `main:/docs` acceptance await the owner's release of the publication hold.
+- Issue 123 and its acceptance backlog remain paused until the owner resumes them.
 
-## Publication hold
-
-Private Pages configuration, requests, deployment and live `main:/docs` acceptance stay held until the owner lifts the publication hold. Source, build and test work continues; main commits rebuild `docs/` through the repository workflow.
-
-# Forward plan
-
-Issue 123 implementation remains paused; its acceptance backlog is preserved, not resumed. Keep qualified candidates distinct from canonical source, ordinary installed artifacts, native acceptance and publication.
-
-## Native facade acceptance
-
-Keep Fly a small lazy namespace for ten canonical modules. Preserve module identity, import metadata and child imports on FontLab's arm64 Python 3.11 runtime. At native acceptance, test the final wheel and source distribution in FontLab. Check all ten aliases, both import forms, canonical metadata and child imports. Record host version, artifact hashes and loaded source paths.
-
-Run adapted Feature scripts on owned fonts through `fly.ap.fontui.feature_blocks` and explicit `fly.ap` submodule imports. Retain Apply/Undo/Redo/save/reopen evidence in the consuming repositories. Existing import proofs are offline only.
-
-Use the workspace owned-fixture runner. Canonical editable installs can shadow worktree code. Do not install into FontLab for these checks. Historical native alias receipts do not qualify later provider refactors.
-
-## Provider and distribution boundaries
-
-Shared UI, general script helpers and active-font feature helpers belong in App. Fontport owns fontParts/UFO support; Glyport owns Glyphs.app compatibility. Fly adds aliases, not wrappers. Complete installed FontLab native qualification for the released cohort; ordinary external artifact qualification is recorded in CHANGELOG. Keep the detailed open items in TODO.
-
-## Development checks
-
-Use the explicit arm64 Python 3.11 source-test recipe in README. `./test.sh` runs `uv run --no-sync python -m pytest` and requires a prepared environment with pytest; it does not install dependencies.
-
-## Review, integration and cleanup
-
-Use the detailed open tasks in [TODO.md](TODO.md) as the acceptance checklist. Complete one scoped MVP, then run the exact repository checks and unchanged 80% gate for each complete changed production module. Keep source, genuine artifacts, ordinary origins and native behavior separate. Obtain independent review before a milestone commit/push and verify the actual remote head. Reconcile concurrent source and all callers before main integration. Preserve recovery/unique work and fresh owner/worktree attachments before obsolete branch/file cleanup. Update TODO/PLAN and record only scoped verified results in CHANGELOG. Do not drive the owner's FontLab, install into its user folder or publish a site from this proposal.
+Use the README's arm64 Python 3.11 recipe for source tests. Preserve the 80% gate for each complete changed production module, independent milestone review and required delivery hooks. Verify release artifacts, ordinary installations and native execution on their respective targets.

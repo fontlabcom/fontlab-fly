@@ -5,6 +5,10 @@ this_file: CHANGELOG.md
 ## Unreleased
 
 - Site now uses the fly-january 0.2.1 theme (chrome: fontlab).
+- Pinned the PyPI publishing action. Owner setup for the `fontlab-fly` PyPI project: confirm its GitHub trusted publisher is `fontlabcom/fontlab-fly`, workflow `release.yml`, environment `pypi`.
+- Issue 271 installer integration and release checks passed at `84d1c76` (v1.3.9). Tests run `44414601076` and Release run `44414716294` succeeded. Both GitHub distributions matched their PyPI hashes, and the source archive contained the tagged installer byte for byte.
+- Verified Fly’s ten-alias source routing and all nine consumer migrations in v1.3.1 (`733566ef`). Fly’s runtime, examples, migration tool and skills match that revision at `37fd45d`.
+- All six provider and migration cases currently deselected in CI passed locally against the sibling checkouts in the 36-test suite at base `37fd45d`. Future reruns depend on provider or consumer changes.
 
 ## 2026-11-18 — Issue 271 source archive installer
 

@@ -207,10 +207,14 @@ not child-module behavior or full target functionality. Native acceptance uses
 the workspace runner, owned fixtures and loaded-path checks because canonical
 editable installs can shadow the worktree.
 
-WORK.md retains historical FontLab 9.0.9783/Python 3.11.6/Qt 5.15.19 wheel/sdist
-checks predating the provider refactor. Current native acceptance remains open.
+Current native acceptance is tracked in [TODO.md](TODO.md).
 
 ## Releases and licence
+
+`./publish.sh` builds the tagged release locally and dispatches `release.yml`.
+GitHub Actions builds the tag and publishes the wheel and source archive to
+PyPI through Trusted Publishing (OIDC) in the `pypi` environment.
+
 v0.2.0 shipped the original seven aliases. v0.2.1 added `gp` and `fp`.
 v0.2.2 set their dependency minimums and included NOTICE in wheel licence files.
 
